@@ -8,8 +8,8 @@ import sys
 import os
 from typing import List
 
-from sway_config_parser import SwayConfigParser, OutputConfig
-from background_manager import BackgroundManager
+from swaybgplus.sway_config_parser import SwayConfigParser, OutputConfig
+from swaybgplus.background_manager import BackgroundManager
 
 
 def main():
