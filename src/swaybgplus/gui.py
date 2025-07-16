@@ -16,8 +16,8 @@ from PIL import Image
 import cairo
 import subprocess
 
-from sway_config_parser import SwayConfigParser, OutputConfig
-from background_manager import BackgroundManager
+from swaybgplus.sway_config_parser import SwayConfigParser, OutputConfig
+from swaybgplus.background_manager import BackgroundManager
 
 
 class MonitorWidget(Gtk.DrawingArea):

@@ -8,7 +8,7 @@ import subprocess
 import shutil
 from PIL import Image, ImageOps
 from typing import List, Tuple, Optional
-from sway_config_parser import OutputConfig, SwayConfigParser
+from swaybgplus.sway_config_parser import OutputConfig, SwayConfigParser
 
 
 class BackgroundManager:
