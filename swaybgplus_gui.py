@@ -784,6 +784,12 @@ class SwayBGPlusGUI:
         load_image_btn = Gtk.Button.new_with_label("📁 Load Image")
         load_image_btn.connect('clicked', self.on_load_image)
         image_controls_box.pack_end(load_image_btn, False, False, 0)
+
+        # Apply background button
+        apply_bg_btn = Gtk.Button.new_with_label("🖼️ Apply Background")
+        apply_bg_btn.connect('clicked', self.on_apply_background)
+        apply_bg_btn.set_tooltip_text("Apply the current image as wallpaper to all monitors")
+        image_controls_box.pack_end(apply_bg_btn, False, False, 0)
         
         # Mode selection
         self.mode_combo = Gtk.ComboBoxText()
@@ -1240,6 +1246,60 @@ class SwayBGPlusGUI:
             # Update preview mode
             self.monitor_widget.set_preview_mode(self.current_mode)
             self.update_status(f"Mode changed to: {active_text}")
+
+    def on_apply_background(self, button):
+        """Handle apply background button - saves and sets wallpaper"""
+        # Check if an image is loaded
+        if not self.current_image_path:
+            self.show_error("No image loaded. Please load an image first.")
+            return
+
+        # Check if we have outputs
+        if not self.outputs:
+            self.show_error("No monitor outputs detected. Please check your display configuration.")
+            return
+
+        try:
+            # Get current positioning from monitor widget
+            image_offset = self.monitor_widget.image_offset
+            image_scale = self.monitor_widget.image_scale
+
+            # Apply the background based on the current mode
+            success = False
+            if self.current_mode == "stretched":
+                # Use stretched mode for spanning across monitors
+                success = self.background_manager.set_background_stretched(
+                    self.current_image_path,
+                    self.outputs,
+                    image_offset,
+                    image_scale
+                )
+            else:
+                # Use fitted mode for individual monitor backgrounds (fill, fit, center, tile)
+                success = self.background_manager.set_background_fitted(
+                    self.current_image_path,
+                    self.outputs,
+                    self.current_mode,
+                    image_offset,
+                    image_scale
+                )
+
+            if success:
+                # Mark as applied and save the original path
+                self.background_applied = True
+                self.save_original_image_path(self.current_image_path)
+
+                # Show success message
+                self.show_info("Background Applied",
+                             f"Successfully applied background in {self.current_mode} mode.\n"
+                             f"The wallpaper has been saved to ~/.config/sway/backgrounds/")
+                self.update_status(f"Background applied: {os.path.basename(self.current_image_path)}")
+            else:
+                self.show_error("Failed to apply background. Please check your sway configuration.")
+
+        except Exception as e:
+            self.show_error(f"Error applying background: {str(e)}")
+            print(f"Error applying background: {e}")
     
     def on_load_image(self, button):
         """Handle load image button"""
