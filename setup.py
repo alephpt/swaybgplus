@@ -21,8 +21,9 @@ def get_version():
     """Get version from __version__.py or default"""
     try:
         with open("__version__.py", "r") as f:
-            exec(f.read())
-            return locals()['__version__']
+            version_dict = {}
+            exec(f.read(), version_dict)
+            return version_dict['__version__']
     except FileNotFoundError:
         return "1.0.0"
 
@@ -39,17 +40,17 @@ setup(
     name="swaybgplus",
     version=get_version(),
     author="SwayBG+ Contributors",
-    author_email="swaybgplus@example.com",
-    description="Advanced multi-monitor background manager for Sway with screen orientation support",
+    author_email="dev@neotec.dev",
+    description="Sway Background and Screen Manager",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/swaybgplus",
+    url="https://github.com/neotecdigital/swaybgplus",
     project_urls={
-        "Bug Reports": "https://github.com/yourusername/swaybgplus/issues",
-        "Source": "https://github.com/yourusername/swaybgplus",
-        "Documentation": "https://github.com/yourusername/swaybgplus/blob/main/README.md",
+        "Bug Reports": "https://github.com/neotecdigital/swaybgplus/issues",
+        "Source": "https://github.com/neotecdigital/swaybgplus",
+        "Documentation": "https://github.com/neotecdigital/swaybgplus/blob/main/README.md",
     },
-    packages=find_packages(),
+    packages=find_packages(exclude=['backups', 'backups.*', 'build', 'build.*', '__pycache__']),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: X11 Applications :: GTK",

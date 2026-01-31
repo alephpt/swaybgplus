@@ -14,7 +14,7 @@ from background_manager import BackgroundManager
 
 def main():
     parser = argparse.ArgumentParser(
-        description="SwayBG+ - Multi-monitor background manager for sway",
+        description="swaybg+ - Sway Background and Screen Manager",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
