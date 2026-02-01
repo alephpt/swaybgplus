@@ -1,11 +1,13 @@
 # Maintainer: Neotec Digital <dev@neotec.dev>
-pkgname=swaybgplus
+pkgname=swaybg-plus
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Sway Background and Screen Manager"
 arch=('any')
 url="https://github.com/neotecdigital/swaybgplus"
 license=('MIT')
+provides=('swaybgplus')
+conflicts=('swaybgplus')
 depends=(
     'python'
     'python-pillow'
@@ -18,16 +20,16 @@ makedepends=('python-setuptools')
 optdepends=(
     'python-pip: for additional Python package management'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("swaybgplus-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # Update this with actual checksum when releasing
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "swaybgplus-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "swaybgplus-$pkgver"
     
     # Install Python package
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build

@@ -1,4 +1,4 @@
-pkgbase = swaybgplus
+pkgbase = swaybg-plus
 	pkgdesc = Sway Background and Screen Manager
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -13,7 +13,9 @@ pkgbase = swaybgplus
 	depends = sway
 	depends = swaybg
 	optdepends = python-pip: for additional Python package management
+	provides = swaybgplus
+	conflicts = swaybgplus
 	source = swaybgplus-1.0.0.tar.gz::https://github.com/neotecdigital/swaybgplus/archive/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = swaybgplus
+pkgname = swaybg-plus

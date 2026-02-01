@@ -1,5 +1,5 @@
 # Maintainer: Neotec Digital <dev@neotec.dev>
-pkgname=swaybgplus-git
+pkgname=swaybg-plus-git
 pkgver=r47.1a2b3c4
 pkgrel=1
 pkgdesc="Sway Background and Screen Manager (development version)"
@@ -21,8 +21,8 @@ makedepends=(
 optdepends=(
     'python-pip: for additional Python package management'
 )
-provides=('swaybgplus')
-conflicts=('swaybgplus')
+provides=('swaybgplus' 'swaybg-plus')
+conflicts=('swaybgplus' 'swaybg-plus')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
