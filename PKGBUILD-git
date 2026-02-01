@@ -1,11 +1,11 @@
-# Maintainer: Richard Christoper <rchris@vaziolabs.com>
+# Maintainer: Neotec Digital <dev@neotec.dev>
 pkgname=swaybgplus-git
 pkgver=r47.1a2b3c4
 pkgrel=1
-pkgdesc="Advanced multi-monitor background manager for Sway with screen orientation support (development version)"
+pkgdesc="Sway Background and Screen Manager (development version)"
 arch=('any')
-url="https://github.com/alephpt/swaybgplus"
-license=('Ancillary')
+url="https://github.com/neotecdigital/swaybgplus"
+license=('MIT')
 depends=(
     'python'
     'python-pillow'

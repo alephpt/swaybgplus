@@ -1,11 +1,11 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Neotec Digital <dev@neotec.dev>
 pkgname=swaybgplus
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Advanced multi-monitor background manager for Sway with screen orientation support"
+pkgdesc="Sway Background and Screen Manager"
 arch=('any')
-url="https://github.com/alephpt/swaybgplus"
-license=('Ancillary')
+url="https://github.com/neotecdigital/swaybgplus"
+license=('MIT')
 depends=(
     'python'
     'python-pillow'
